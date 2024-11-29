@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ant-segmented-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ant-segmented-group > label {
+    flex-grow: 1; /* Allows labels to grow equally */
+    flex-basis: 0; /* Ensures equal width distribution */
+}
