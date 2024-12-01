@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ProductContext } from "./context/Context.tsx";
+import { Provider } from "react-redux";
+import { store } from "./store/store.ts";
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -21,9 +23,11 @@ const queryClient = new QueryClient({
 createRoot(document.getElementById("root")!).render(
     <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-            <ProductContext>
-                <App />
-            </ProductContext>
+            <Provider store={store}>
+                <ProductContext>
+                    <App />
+                </ProductContext>
+            </Provider>
         </BrowserRouter>
     </QueryClientProvider>
 );

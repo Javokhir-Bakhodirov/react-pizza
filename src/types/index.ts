@@ -14,4 +14,5 @@ export interface PizzaI {
     categoryId: number;
     popularity: number;
     imgUrl: string;
+    quantity: number;
 }

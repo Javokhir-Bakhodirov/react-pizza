@@ -11,3 +11,8 @@
     flex-grow: 1; /* Allows labels to grow equally */
     flex-basis: 0; /* Ensures equal width distribution */
 }
+
+html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}

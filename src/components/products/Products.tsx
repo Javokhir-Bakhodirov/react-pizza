@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { useQuery } from "react-query";
 import ProductCard from "../card/ProductCard";
 import { PizzaI } from "@/types";
+import { motion } from "framer-motion";
 
 const Products = () => {
     const { categoryId } = useContext(Context);
@@ -16,16 +17,26 @@ const Products = () => {
                 .get("pizzas", { params: { categoryId } })
                 .then(res => res.data),
     });
-    console.log(pizzas);
+    const container = {
+        hidden: {},
+        visible: {
+            transition: { staggerChildren: 0.2 },
+        },
+    };
 
     return (
         <section className="mt-[30px]">
             <Container>
-                <div className="grid grid-cols-4 gap-[45px] justify-between ">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.5 }}
+                    variants={container}
+                    className="grid grid-cols-4 gap-[45px] justify-between ">
                     {pizzas.map((pizza: PizzaI) => (
                         <ProductCard pizza={pizza} key={pizza.id} />
                     ))}
-                </div>
+                </motion.div>
             </Container>
         </section>
     );
